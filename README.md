@@ -25,7 +25,7 @@ The CSV file's columns should be pretty self-explanatory:
 * Display name: The visual name that shows up in the Printers & Scanners pane of the System Preferences, and in the print dialogue boxes.  Also used in the Munki pkginfo.
 * Address: The IP or DNS address of the printer. The template uses the form: `lpr://ADDRESS`.  Change to another protocol in the template if necessary.
 * Driver: Name of the driver file in /Library/Printers/PPDs/Contents/Resources/.
-* Description: Used only in the Munki pkginfo. 
+* Description: Used only in the Munki pkginfo.
 * Options: Any printer options that should be specified. These **must** be space-delimited key=value pairs, such as "HPOptionDuplexer=True OutputMode=normal".  **Do not use commas to separate the options, because this is a comma-separated values file.**
 
 The CSV file is not sanity-checked for invalid entries or blank fields, so double check your file and test your pkginfos thoroughly.
@@ -36,14 +36,14 @@ A full description of usage is available with:
 
 ```
 ./print_generator.py -h
-usage: print_generator.py [-h] [--printername PRINTERNAME] 
+usage: print_generator.py [-h] [--printername PRINTERNAME]
 						  [--driver DRIVER]
-                          [--address ADDRESS] 
+                          [--address ADDRESS]
                           [--location LOCATION]
-                          [--displayname DISPLAYNAME] 
+                          [--displayname DISPLAYNAME]
                           [--desc DESC]
                           [--options [OPTIONS [OPTIONS ...]]]
-                          [--version VERSION] 
+                          [--version VERSION]
                           [--csv CSV]
 
 Generate a Munki nopkg-style pkginfo for printer installation.
@@ -57,7 +57,8 @@ As in the above CSV section, the arguments are all the same:
 * `--location`: The "location" of the printer. If not provided, this will default to the value of `--printername`.
 * `--displayname`: The visual name that shows up in the Printers & Scanners pane of the System Preferences, and in the print dialogue boxes.  Also used in the Munki pkginfo.  If not provided, this will default to the value of `--printername`.
 * `--desc`: Used only in the Munki pkginfo. If not provided, will default to an empty string ("").
-* `--options`: Any number of printer options that should be specified. These should be space-delimited key=value pairs, such as "HPOptionDuplexer=True OutputMode=normal". 
+* `--driverpkg`: Used only in the Munki pkginfo. Will set a required install of specified driver installation pkg.
+* `--options`: Any number of printer options that should be specified. These should be space-delimited key=value pairs, such as "HPOptionDuplexer=True OutputMode=normal".
 * `--version`: The version number of the Munki pkginfo. Defaults to "1.0".
 
 ### Figuring out options:
@@ -139,7 +140,7 @@ for option in lpoptOut.splitlines():
         if optionName == myOption:
             if not printerOptions[myOption] == actualOptionValue:
                 sys.exit(0)
-                
+
 sys.exit(1)</string>
 	<key>installer_type</key>
 	<string>nopkg</string>

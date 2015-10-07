@@ -37,14 +37,14 @@ for option in lpoptOut.splitlines():
         if optionName == myOption:
             if not printerOptions[myOption] == actualOptionValue:
                 sys.exit(0)
-                
+
 sys.exit(1)</string>
 	<key>installer_type</key>
 	<string>nopkg</string>
 	<key>minimum_os_version</key>
 	<string>10.7.0</string>
 	<key>name</key>
-	<string>AddPrinter-PRINTERNAME</string>
+	<string>printer-PRINTERNAME</string>
 	<key>postinstall_script</key>
 	<string>#!/usr/bin/python
 import subprocess
@@ -78,7 +78,7 @@ proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 if lpadminErr:
     print "Error: %s" % lpadminErr
     sys.exit(1)
-print "Results: %s" % lpadminOut    
+print "Results: %s" % lpadminOut
 sys.exit(0)</string>
 	<key>unattended_install</key>
 	<true/>
@@ -91,5 +91,9 @@ sys.exit(0)</string>
 	<true/>
 	<key>version</key>
 	<string>VERSION</string>
+	<key>requires</key>
+	<array>
+		<string>PKGNAME</string>
+	</array>
 </dict>
 </plist>
