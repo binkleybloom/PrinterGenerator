@@ -26,6 +26,7 @@ The CSV file's columns should be pretty self-explanatory:
 * Address: The IP or DNS address of the printer. The template uses the form: `lpr://ADDRESS`.  Change to another protocol in the template if necessary.
 * Driver: Name of the driver file in /Library/Printers/PPDs/Contents/Resources/.
 * Description: Used only in the Munki pkginfo.
+* Required Driver pkg: Name of the required printer driver installation package - must exist in munki repo.
 * Options: Any printer options that should be specified. These **must** be space-delimited key=value pairs, such as "HPOptionDuplexer=True OutputMode=normal".  **Do not use commas to separate the options, because this is a comma-separated values file.**
 
 The CSV file is not sanity-checked for invalid entries or blank fields, so double check your file and test your pkginfos thoroughly.
@@ -42,6 +43,7 @@ usage: print_generator.py [-h] [--printername PRINTERNAME]
                           [--location LOCATION]
                           [--displayname DISPLAYNAME]
                           [--desc DESC]
+													[--driverpkg MUNKIDRIVERPKG]
                           [--options [OPTIONS [OPTIONS ...]]]
                           [--version VERSION]
                           [--csv CSV]
@@ -94,6 +96,7 @@ This is the format you must use when passing options to `--options`, or specifyi
 		--location="Tech Office" \
 		--displayname="My Printer Queue" \
 		--desc="Black and white printer in Tech Office" \
+		--driverpkg="CanonDrivers" \
 		--options="HPOptionDuplexer=True OutputMode=normal" \
 		--version=1.5
 ```
@@ -192,6 +195,10 @@ sys.exit(0)</string>
 /usr/sbin/lpadmin -x MyPrinterQueue</string>
 	<key>uninstallable</key>
 	<true/>
+	<key>requires</key>
+	<array>
+		<string>CanonDrivers</string>
+	</array>
 	<key>version</key>
 	<string>1.5</string>
 </dict>

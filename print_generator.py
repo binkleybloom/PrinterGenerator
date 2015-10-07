@@ -63,7 +63,7 @@ if args.csv:
             # Now change the one variable in the uninstall_script
             newPlist['uninstall_script'] = newPlist['uninstall_script'].replace("PRINTERNAME", row[0])
             # Write out the file
-            newFileName = "AddPrinter-" + row[0] + "-1.0.pkginfo"
+            newFileName = "printer-" + row[0] + "-1.0.pkginfo"
             f = open(newFileName, 'wb')
             writePlist(newPlist, f)
             f.close()
@@ -115,7 +115,7 @@ else:
    # root pkginfo variable replacement
     newPlist['description'] = description
     newPlist['display_name'] = displayName
-    newPlist['name'] = "AddPrinter-" + str(args.printername)
+    newPlist['name'] = "printer-" + str(args.printername)
     newPlist['version'] = version
     newPlist['requires'][0] = driverPkg
     # installcheck_script variable replacement
