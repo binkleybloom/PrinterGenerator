@@ -96,7 +96,7 @@ This is the format you must use when passing options to `--options`, or specifyi
 		--location="Tech Office" \
 		--displayname="My Printer Queue" \
 		--desc="Black and white printer in Tech Office" \
-		--driverpkg="CanonDrivers" \
+		--driverpkg="HewlettPackardPrinterDrivers" \
 		--options="HPOptionDuplexer=True OutputMode=normal" \
 		--version=1.5
 ```
