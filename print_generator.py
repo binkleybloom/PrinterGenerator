@@ -63,7 +63,7 @@ if args.csv:
             # Now change the one variable in the uninstall_script
             newPlist['uninstall_script'] = newPlist['uninstall_script'].replace("PRINTERNAME", row[0])
             # Write out the file
-            newFileName = "printer-" + row[0] + "-1.0.pkginfo"
+            newFileName = "printer-" + row[0] + "-1.0.plist"
             f = open(newFileName, 'wb')
             writePlist(newPlist, f)
             f.close()
